@@ -10,7 +10,7 @@ import UIKit
 
 class ColorPickerViewController: UIViewController {
 
-    weak var delegate: ColorPickerViewDelegate?
+    var completionHandler: ((UIColor) -> ())!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,15 +19,15 @@ class ColorPickerViewController: UIViewController {
     }
     
     @IBAction func greenButton(_ sender: Any) {
-        delegate?.userDidChooseColor(color: ColorAsset.green.color)
-    }
+        completionHandler(ColorAsset.green.color)
+    } 
     
     @IBAction func orangeButton(_ sender: Any) {
-        delegate?.userDidChooseColor(color: ColorAsset.orange.color)
+        completionHandler(ColorAsset.orange.color)
     }
     
     @IBAction func purpleButton(_ sender: Any) {
-        delegate?.userDidChooseColor(color: ColorAsset.purple.color)
+        completionHandler(ColorAsset.purple.color)
     }
     /*
     // MARK: - Navigation
@@ -39,8 +39,4 @@ class ColorPickerViewController: UIViewController {
     }
     */
 
-}
-
-protocol ColorPickerViewDelegate: class {
-    func userDidChooseColor(color: UIColor)
 }
